@@ -8,7 +8,7 @@ import config
 
 from deal import Deal
 from lib import HuobiServices
-
+from config import work_dir
 
 class Tactic(object):
     def run(self):
@@ -43,8 +43,9 @@ class PriceDiffTactic(Tactic):
         self.goods_unit = config.price_unit[self.symbol][0]
         self.money_unit = config.price_unit[self.symbol][1]
 
-        self.live_file = "save/%s_deals" % self.name
-        self.finish_file = "finished/%s" % self.name
+
+        self.live_file = work_dir + "save/%s_deals" % self.name
+        self.finish_file = work_dir + "finished/%s" % self.name
 
         self.recover()
 
@@ -161,7 +162,7 @@ class PriceDiffTactic(Tactic):
         order1_id = order1["data"]
         logging.info("success create order %s" % order1_id)
 
-        order2 = HuobiServices.send_order(self.fg(amount), None, self.symbol, "buy-limit", price=self.fm(bid_low))
+        order2 = HuobiServices.send_order(self.fg(amount*(1+self.bid_gap/2)), None, self.symbol, "buy-limit", price=self.fm(bid_low))
         if order2['status'] != "ok":
             logging.error("send order failed: %s" % order2["err-msg"])
             # 撤回order1
