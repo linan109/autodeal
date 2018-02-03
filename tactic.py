@@ -101,7 +101,7 @@ class PriceDiffTactic(Tactic):
                 self.deals.pop(i)
                 self.record_finished(deal)
             if deal.is_out_dated():
-                logging.info("FAIL! deal %s %s out of date" % (deal.order1_id, deal.order2_id))
+                logging.info("FAIL! deal %s %s out of date. create at %s" % (deal.order1_id, deal.order2_id, deal.create_time))
                 self.deals.pop(i)
                 self.record_outdated(deal)
         self.store_deals()
