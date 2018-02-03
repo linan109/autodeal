@@ -9,34 +9,34 @@ deal_interval = 4 * 60
 
 # name, goods, money, bid_gap, bid_goal, k_size, k_period, max_deal_num, deal_size
 init_deals = [
-    ["eth-usdt-1", "eth", "usdt", 0.1, 0.90, 8, "60min", 20, 1],
-    ["eos-usdt-1", "eos", "usdt", 0.1, 0.90, 8, "60min", 20, 1],
+    ["eth-usdt-1", "eth", "usdt", 0.1, 0.90, 8, "60min", 10, 1],
+    ["eos-usdt-1", "eos", "usdt", 0.1, 0.90, 8, "60min", 10, 1],
     ["iost-usdt-1", "iost", "usdt", 0.1, 0.90, 8, "60min", 5, 1],
     ["dta-usdt-1", "dta", "usdt", 0.1, 0.90, 8, "60min", 5, 1],
 
-    ["eth-usdt-small", "eth", "usdt", 0.04, 0.40, 12, "60min", 50, 1],
-    ["eos-usdt-small", "eos", "usdt", 0.04, 0.40, 12, "60min", 50, 1],
-    ["iost-usdt-small", "iost", "usdt", 0.04, 0.40, 12, "60min", 10, 1],
-    ["dta-usdt-small", "dta", "usdt", 0.04, 0.40, 12, "60min", 10, 1],
+    ["eth-usdt-small", "eth", "usdt", 0.04, 0.40, 12, "60min", 30, 1],
+    ["eos-usdt-small", "eos", "usdt", 0.04, 0.40, 12, "60min", 30, 1],
+    ["iost-usdt-small", "iost", "usdt", 0.04, 0.40, 12, "60min", 15, 1],
+    ["dta-usdt-small", "dta", "usdt", 0.04, 0.40, 12, "60min", 15, 1],
 
-    ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 50, 1],
-    ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 50, 1],
+    ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 10, 1],
+    ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 10, 1],
     ["iost-usdt-fast", "iost", "usdt", 0.06, 0.70, 4, "60min", 5, 1],
     ["dta-usdt-fast", "dta", "usdt", 0.06, 0.70, 4, "60min", 5, 1],
 
-    ["eth-usdt-fast-2", "eth", "usdt", 0.05, 0.85, 8, "60min", 50, 1],
-    ["eos-usdt-fast-2", "eos", "usdt", 0.05, 0.85, 8, "60min", 50, 1],
+    ["eth-usdt-fast-2", "eth", "usdt", 0.05, 0.85, 8, "60min", 10, 1],
+    ["eos-usdt-fast-2", "eos", "usdt", 0.05, 0.85, 8, "60min", 10, 1],
     ["iost-usdt-fast-2", "iost", "usdt", 0.05, 0.85, 8, "60min", 5, 1],
     ["dta-usdt-fast-2", "dta", "usdt", 0.05, 0.85, 8, "60min", 5, 1],
 
-    ["eth-usdt-fast-3", "eth", "usdt", 0.05, 0.95, 4, "60min", 20, 1],
-    ["eos-usdt-fast-3", "eos", "usdt", 0.05, 0.95, 4, "60min", 20, 1],
+    ["eth-usdt-fast-3", "eth", "usdt", 0.05, 0.95, 4, "60min", 10, 1],
+    ["eos-usdt-fast-3", "eos", "usdt", 0.05, 0.95, 4, "60min", 10, 1],
 
-    ["eth-usdt-fast-4", "eth", "usdt", 0.05, 0.85, 2, "60min", 50, 1],
-    ["eos-usdt-fast-4", "eos", "usdt", 0.05, 0.85, 2, "60min", 50, 1],
+    ["eth-usdt-fast-4", "eth", "usdt", 0.05, 0.85, 2, "60min", 10, 1],
+    ["eos-usdt-fast-4", "eos", "usdt", 0.05, 0.85, 2, "60min", 10, 1],
 
-    ["eth-usdt-fast-5", "eth", "usdt", 0.05, 0.95, 2, "60min", 20, 1],
-    ["eos-usdt-fast-5", "eos", "usdt", 0.05, 0.95, 2, "60min", 20, 1],
+    ["eth-usdt-fast-5", "eth", "usdt", 0.05, 0.95, 2, "60min", 10, 1],
+    ["eos-usdt-fast-5", "eos", "usdt", 0.05, 0.95, 2, "60min", 10, 1],
 
 ]
 
