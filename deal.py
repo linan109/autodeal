@@ -53,7 +53,8 @@ class Deal(JsonSerializable):
         return self.order1_finished & self.order2_finished
 
     def is_out_dated(self):
-        return self.create_time + timedelta(days=7) > datetime.now()
+        create_time = datetime.strptime(self.create_time, '%Y-%m-%dT%H:%M:%S')
+        return create_time + timedelta(days=7) > datetime.now()
 
 
 

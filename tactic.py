@@ -192,6 +192,6 @@ if __name__ == '__main__':
 
     a = PriceDiffTactic(test_deal)
     a.deals.append(Deal("111", "222", buy_price="232"))
-    [print(d) for d in a.deals]
+    # [print(d) for d in a.deals]
     a.store_deals()
     a.record_finished(a.deals[-1])

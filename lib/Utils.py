@@ -14,12 +14,20 @@ import urllib
 import urllib.parse
 import urllib.request
 import logging
+import os
 
 import requests
 
+config = dict()
+with open(os.path.join(os.getenv("HOME"), ".autodealrc")) as f:
+    for line in f:
+        rows = line.split("=")
+        if len(rows) == 2:
+            config[rows[0].strip()] = rows[1].strip().strip('"')
+
 # 此处填写APIKEY
-ACCESS_KEY = "YOUR ACCESS KEY"
-SECRET_KEY = "YOUR SECRET KEY"
+ACCESS_KEY = config["ACCESS_KEY"]
+SECRET_KEY = config["SECRET_KEY"]
 
 # API 请求地址
 API_BASE = "api.huobi.pro"
@@ -30,7 +38,7 @@ TRADE_URL = "https://api.huobipro.com"
 # TRADE_URL = "https://api.huobi.pro"
 
 # 首次运行可通过get_accounts()获取acct_id,然后直接赋值,减少重复获取。
-ACCOUNT_ID = None
+ACCOUNT_ID = 1520961
 
 
 
@@ -119,7 +127,6 @@ def createSign(pParams, method, host_url, request_path, secret_key):
     payload = '\n'.join(payload)
     payload = payload.encode(encoding='UTF8')
     secret_key = secret_key.encode(encoding='UTF8')
-
     digest = hmac.new(secret_key, payload, digestmod=hashlib.sha256).digest()
     signature = base64.b64encode(digest)
     signature = signature.decode()
