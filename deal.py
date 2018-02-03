@@ -54,7 +54,7 @@ class Deal(JsonSerializable):
 
     def is_out_dated(self):
         create_time = datetime.strptime(self.create_time, '%Y-%m-%dT%H:%M:%S')
-        return create_time + timedelta(days=7) > datetime.now()
+        return create_time + timedelta(days=7) < datetime.now()
 
 
 
