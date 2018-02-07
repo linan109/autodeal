@@ -8,10 +8,7 @@ autodeal = client.autodeal
 tactics = sorted(autodeal.deal.distinct("tactic"))
 
 for t in tactics:
-    if issubclass(t, unicode):
-        symbol = t.decode()
-    else:
-        symbol = t
+    symbol = t
     print("%s: waiting:%d, succeed:%d, failed:%d." % (
         symbol,
         autodeal.deal.find({"tactic": {"$eq": t},
@@ -25,10 +22,7 @@ for t in tactics:
 # succeed earning
 print ("\n total earning \n")
 for t in tactics:
-    if issubclass(t, unicode):
-        symbol = t.decode()
-    else:
-        symbol = t
+    symbol = t
     strs = symbol.split('-')
     goods = strs[0]
     money = strs[1]
@@ -52,7 +46,7 @@ for t in tactics:
 # earning in 24hr
 print ("\n earning in 24hr \n")
 for t in tactics:
-    symbol = t.decode()
+    symbol = t
     strs = symbol.split('-')
     goods = strs[0]
     money = strs[1]
@@ -77,7 +71,7 @@ for t in tactics:
 # total failed
 print ("\n total failed \n")
 for t in tactics:
-    symbol = t.decode()
+    symbol = t
     strs = symbol.split('-')
     goods = strs[0]
     money = strs[1]
@@ -106,7 +100,7 @@ for t in tactics:
 # failed in 24hr
 print ("\n failed in 24hr \n")
 for t in tactics:
-    symbol = t.decode()
+    symbol = t
     strs = symbol.split('-')
     goods = strs[0]
     money = strs[1]
