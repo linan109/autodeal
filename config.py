@@ -19,10 +19,10 @@ init_deals = [
     ["iost-usdt-small", "iost", "usdt", 0.04, 0.40, 12, "60min", 3, 1, 3*24*60],
     ["dta-usdt-small", "dta", "usdt", 0.04, 0.40, 12, "60min", 3, 1, 3*24*60],
 
-    ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 1*60],
-    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 1*60],
-    ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 2*60],
-    ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 2*60],
+    ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.40, 12, "60min", 2, 1, 12*60],
+    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.40, 12, "60min", 2, 1, 12*60],
+    ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 12*60],
+    ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 12*60],
 
     ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
     ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
