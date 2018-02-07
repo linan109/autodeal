@@ -75,6 +75,11 @@ class PriceDiffTactic(Tactic):
         for i, deal in enumerate(deals):
             deal.update(remain_orders)
 
+        # update failed
+        deals = Deal.objects(status="failed", tactic=self.name)
+        for i, deal in enumerate(deals):
+            deal.update(remain_orders)
+
     def run(self):
         # update deal
         logging.info("%s start run" % self.name)

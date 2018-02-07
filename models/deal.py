@@ -14,7 +14,8 @@ class Deal(db.Document):
     sell_amount = db.StringField()
     order1_finished = db.BooleanField(default=False)
     order2_finished = db.BooleanField(default=False)
-    create_time = db.DateTimeField(default=datetime.now())
+    create_time = db.DateTimeField(default=datetime.utcnow())
+    finish_time = db.DateTimeField()
     status = db.StringField(default="waiting")
 
     def update_status(self, remain_order_ids):
@@ -31,11 +32,13 @@ class Deal(db.Document):
         if self.order1_finished and self.order2_finished:
             logging.info("SUCCESS! deal %s %s finished" % (self.order1_id, self.order2_id))
             self.status = "succeed"
+            self.finish_time = datetime.utcnow()
 
         # check isoutdated
-        if self.create_time + timedelta(minutes=self.expired) < datetime.now():
+        if self.create_time + timedelta(minutes=self.expired) < datetime.utcnow():
             logging.info("FAIL! deal %s %s out of date. create at %s" % (self.order1_id, self.order2_id, deal.create_time))
             self.status = "failed"
+            self.finish_time = datetime.utcnow()
 
         self.save()
 
