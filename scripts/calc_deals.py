@@ -8,8 +8,12 @@ autodeal = client.autodeal
 tactics = sorted(autodeal.deal.distinct("tactic"))
 
 for t in tactics:
+    if issubclass(t, unicode):
+        symbol = t.decode()
+    else:
+        symbol = t
     print("%s: waiting:%d, succeed:%d, failed:%d." % (
-        t.decode(),
+        symbol,
         autodeal.deal.find({"tactic": {"$eq": t},
                             "status": {"$eq": "waiting"}}).count(),
         autodeal.deal.find({"tactic": {"$eq":  t},
