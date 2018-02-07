@@ -15,9 +15,10 @@ class JsonSerializable(object):
 
 
 class Deal(JsonSerializable):
-    def __init__(self, order1_id, order2_id, **kwargs):
+    def __init__(self, order1_id, order2_id, expired=3*24*60, **kwargs):
         self.order1_id = order1_id
         self.order2_id = order2_id
+        self.expired = expired
         self.buy_price = kwargs.get("buy_price", "none")
         self.sell_price = kwargs.get("sell_price", "none")
         self.amount = kwargs.get("amount", "none")
@@ -54,7 +55,7 @@ class Deal(JsonSerializable):
 
     def is_out_dated(self):
         create_time = datetime.strptime(self.create_time, '%Y-%m-%dT%H:%M:%S')
-        return create_time + timedelta(days=7) < datetime.now()
+        return create_time + timedelta(minutes=self.expired) < datetime.now()
 
 
 

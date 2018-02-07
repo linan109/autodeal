@@ -7,22 +7,27 @@ work_dir = os.path.abspath(os.path.join(__file__, os.pardir)) + '/'
 
 deal_interval = 4 * 60
 
-# name, goods, money, bid_gap, bid_goal, k_size, k_period, max_deal_num, deal_size
+# name, goods, money, bid_gap, bid_goal, k_size, k_period, max_deal_num, deal_size, expired(minute)
 init_deals = [
-    ["eth-usdt-1", "eth", "usdt", 0.1, 0.90, 8, "60min", 3, 1],
-    ["eos-usdt-1", "eos", "usdt", 0.1, 0.90, 8, "60min", 3, 1],
-    ["iost-usdt-1", "iost", "usdt", 0.1, 0.90, 8, "60min", 2, 1],
-    ["dta-usdt-1", "dta", "usdt", 0.1, 0.90, 8, "60min", 2, 1],
+    ["eth-usdt-1", "eth", "usdt", 0.1, 0.90, 8, "60min", 3, 1, 3*24*60],
+    ["eos-usdt-1", "eos", "usdt", 0.1, 0.90, 8, "60min", 3, 1, 3*24*60],
+    ["iost-usdt-1", "iost", "usdt", 0.1, 0.90, 8, "60min", 2, 1, 3*24*60],
+    ["dta-usdt-1", "dta", "usdt", 0.1, 0.90, 8, "60min", 2, 1, 3*24*60],
 
-    ["eth-usdt-small", "eth", "usdt", 0.04, 0.40, 12, "60min", 10, 1],
-    ["eos-usdt-small", "eos", "usdt", 0.04, 0.40, 12, "60min", 10, 1],
-    ["iost-usdt-small", "iost", "usdt", 0.04, 0.40, 12, "60min", 3, 1],
-    ["dta-usdt-small", "dta", "usdt", 0.04, 0.40, 12, "60min", 3, 1],
+    ["eth-usdt-small", "eth", "usdt", 0.04, 0.40, 12, "60min", 10, 1, 3*24*60],
+    ["eos-usdt-small", "eos", "usdt", 0.04, 0.40, 12, "60min", 10, 1, 3*24*60],
+    ["iost-usdt-small", "iost", "usdt", 0.04, 0.40, 12, "60min", 3, 1, 3*24*60],
+    ["dta-usdt-small", "dta", "usdt", 0.04, 0.40, 12, "60min", 3, 1, 3*24*60],
 
-    ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1],
-    ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1],
-    ["iost-usdt-fast", "iost", "usdt", 0.06, 0.70, 4, "60min", 2, 1],
-    ["dta-usdt-fast", "dta", "usdt", 0.06, 0.70, 4, "60min", 2, 1],
+    ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 1*60],
+    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 1*60],
+    ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 2*60],
+    ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.40, 12, "60min", 1, 1, 2*60],
+
+    ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
+    ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
+    ["iost-usdt-fast", "iost", "usdt", 0.06, 0.70, 4, "60min", 2, 1, 3*24*60],
+    ["dta-usdt-fast", "dta", "usdt", 0.06, 0.70, 4, "60min", 2, 1, 3*24*60],
 
     # ["eth-usdt-fast-2", "eth", "usdt", 0.05, 0.85, 8, "60min", 3, 1],
     # ["eos-usdt-fast-2", "eos", "usdt", 0.05, 0.85, 8, "60min", 3, 1],

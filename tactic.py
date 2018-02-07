@@ -39,6 +39,7 @@ class PriceDiffTactic(Tactic):
         self.max_deal_num = init_deal[7]
         self.deal_size = init_deal[8]
         self.symbol = self.goods + self.money
+        self.expired = init_deal[9]
 
         self.goods_unit = config.price_unit[self.symbol][0]
         self.money_unit = config.price_unit[self.symbol][1]
@@ -80,11 +81,9 @@ class PriceDiffTactic(Tactic):
         with open(self.finish_file, "a") as finish:
             finish.write("%s. deal complete. create at %s. buy at %s. sell at %s. amount = %s. \n" % (datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'), deal.create_time, deal.buy_price, deal.sell_price, deal.amount))
 
-
     def record_outdated(self, deal):
         # todo
         pass
-
 
     def update_deal(self):
         req = HuobiServices.orders_list(symbol=self.symbol, states="pre-submitted,submitted,partial-filled",
@@ -176,6 +175,7 @@ class PriceDiffTactic(Tactic):
         logging.info("success create order %s" % order2_id)
 
         self.deals.append(Deal(order1_id, order2_id,
+                               expired=self.expired,
                                buy_price=self.fm(bid_low),
                                sell_price=self.fm(bid_high),
                                amount="%.4f" % amount))
