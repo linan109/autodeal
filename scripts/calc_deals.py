@@ -21,7 +21,10 @@ for t in tactics:
 # succeed earning
 print ("\n total earning \n")
 for t in tactics:
-    symbol = t.decode()
+    if issubclass(t, unicode):
+        symbol = t.decode()
+    else:
+        symbol = t
     strs = symbol.split('-')
     goods = strs[0]
     money = strs[1]
