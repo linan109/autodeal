@@ -67,23 +67,22 @@ class PriceDiffTactic(Tactic):
         req = HuobiServices.orders_list(symbol=self.symbol, states="pre-submitted,submitted,partial-filled",
                                         size=max(100, 5*self.max_deal_num))
         if req["status"] != "ok":
-            logging.error("query orders failed. skip. reason: %s" % req["err-msg"])
+            logging.error("query remain orders failed. skip. reason: %s" % req["err-msg"])
             return
 
         remain_orders = [o["id"] for o in req["data"]]
         return remain_orders
 
     def get_canceled_orders(self):
-        req = HuobiServices.orders_list(symbol=self.symbol, states="canceled partial-canceled",
+        req = HuobiServices.orders_list(symbol=self.symbol, states="canceled",
                                         start_date=(datetime.utcnow() - timedelta(days=2)).strftime("%Y-%m-%d"),
                                         size=max(100, 5*self.max_deal_num))
         if req["status"] != "ok":
-            logging.error("query orders failed. skip. reason: %s" % req["err-msg"])
+            logging.error("query canceled orders failed. skip. reason: %s" % req["err-msg"])
             return
 
         canceled_orders = [o["id"] for o in req["data"]]
         return canceled_orders
-
 
     def update_deal(self):
         remain_orders = self.get_remain_orders()
@@ -188,3 +187,4 @@ if __name__ == '__main__':
 
     a = PriceDiffTactic(test_deal)
     print(a.get_canceled_orders())
+    print(a.get_remain_orders())
