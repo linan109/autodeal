@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import json
 import logging
+from datetime import datetime, timedelta
 from models.deal import Deal
 
 import config
 
 from lib import HuobiServices
 from config import work_dir
+
 
 class Tactic(object):
     def run(self):
@@ -61,7 +63,7 @@ class PriceDiffTactic(Tactic):
     def __repr__(self):
         return self.name
 
-    def update_deal(self):
+    def get_remain_orders(self):
         req = HuobiServices.orders_list(symbol=self.symbol, states="pre-submitted,submitted,partial-filled",
                                         size=max(100, 5*self.max_deal_num))
         if req["status"] != "ok":
@@ -69,16 +71,30 @@ class PriceDiffTactic(Tactic):
             return
 
         remain_orders = [o["id"] for o in req["data"]]
+        return remain_orders
 
+    def get_canceled_orders(self):
+        req = HuobiServices.orders_list(symbol=self.symbol, states="canceled partial-canceled",
+                                        start_date=(datetime.utcnow() - timedelta(days=2)).strftime("%Y-%m-%d"),
+                                        size=max(100, 5*self.max_deal_num))
+        if req["status"] != "ok":
+            logging.error("query orders failed. skip. reason: %s" % req["err-msg"])
+            return
+
+        canceled_orders = [o["id"] for o in req["data"]]
+        return canceled_orders
+
+
+    def update_deal(self):
+        remain_orders = self.get_remain_orders()
+        canceled_orders = self.get_canceled_orders()
         deals = Deal.objects(status="waiting", tactic=self.name)
-
         for i, deal in enumerate(deals):
-            deal.update_status(remain_orders)
-
+            deal.update_status(remain_orders, canceled_orders)
         # update failed
         deals = Deal.objects(status="failed", tactic=self.name)
         for i, deal in enumerate(deals):
-            deal.update_status(remain_orders)
+            deal.update_status(remain_orders, canceled_orders)
 
     def run(self):
         # update deal
@@ -168,6 +184,7 @@ class PriceDiffTactic(Tactic):
 
 
 if __name__ == '__main__':
-    test_deal = ["test", "eth", "usdt", 0.1, 0.90, 8, "60min", 20, 1]
+    test_deal = ["test", "eth", "usdt", 0.1, 0.90, 8, "60min", 20, 1, 24*60]
 
     a = PriceDiffTactic(test_deal)
+    print(a.get_canceled_orders())
