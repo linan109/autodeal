@@ -46,7 +46,7 @@ class Deal(db.Document):
 
         # check isoutdated
         if self.status == "waiting" and self.create_time + timedelta(minutes=self.expired) < datetime.utcnow():
-            logging.info("FAIL! deal %s %s out of date. create at %s" % (self.order1_id, self.order2_id, deal.create_time))
+            logging.info("FAIL! deal %s %s out of date. create at %s" % (self.order1_id, self.order2_id, self.create_time))
             self.status = "failed"
             self.finish_time = datetime.utcnow()
 
