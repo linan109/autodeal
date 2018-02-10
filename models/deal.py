@@ -14,7 +14,7 @@ class Deal(db.Document):
     sell_amount = db.StringField()
     order1_finished = db.BooleanField(default=False)
     order2_finished = db.BooleanField(default=False)
-    create_time = db.DateTimeField(default=datetime.utcnow())
+    create_time = db.DateTimeField(default=datetime.utcnow)
     finish_time = db.DateTimeField()
     status = db.StringField(default="waiting")
 
