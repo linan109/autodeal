@@ -25,6 +25,16 @@ class Tactic(object):
 
     pass
 
+last_query_time = datetime.now() - timedelta(minutes=1)
+last_result = None
+
+
+def get_balance():
+    if datetime.now() - timedelta(minutes=1) > globals()['last_query_time']:
+        globals()['last_result'] = HuobiServices.get_balance()
+        globals()['last_query_time'] = datetime.now()
+    return globals()['last_result']
+
 
 class PriceDiffTactic(Tactic):
     """取最近一段时间的最高价与最低价,以及当前价.
@@ -127,23 +137,6 @@ class PriceDiffTactic(Tactic):
             logging.info("do not create deal. price diff (%s - %s) is not high" % (self.fm(low), self.fm(high)))
 
     def create_deal(self, high, low, close, amount):
-        # check balance
-        balance = HuobiServices.get_balance()
-        if balance["status"] != "ok":
-            logging.error("query balance failed. skip create deal. reason: %s" % balance["err-msg"])
-            return
-
-        for b in balance["data"]["list"]:
-            if b["currency"] == self.goods and \
-                            b["type"] == "trade" and \
-                            float(b["balance"]) <= amount:
-                logging.warning("not enough balance %s:%s" % (self.goods, self.fg(amount)))
-                return
-            if b["currency"] == self.money and \
-                            b["type"] == "trade" and \
-                            float(b["balance"]) <= self.deal_size:
-                logging.warning("not enough balance %s:%.4f" % (self.money, self.deal_size))
-                return
         # calc price
         bid_high = high * self.bid_goal + close * (1 - self.bid_goal)
         bid_low = close * (1 - self.bid_goal) + low * self.bid_goal
@@ -165,6 +158,24 @@ class PriceDiffTactic(Tactic):
         if buy_count >= ORDER_LIMIT:
             logging.warning("too many unfinished buying order(%d) above %.4f" % (buy_count, bid_low * (1 - ORDER_JUSTIFY)))
             return
+
+        # check balance
+        balance = get_balance()
+        if balance["status"] != "ok":
+            logging.error("query balance failed. skip create deal. reason: %s" % balance["err-msg"])
+            return
+
+        for b in balance["data"]["list"]:
+            if b["currency"] == self.goods and \
+                            b["type"] == "trade" and \
+                            float(b["balance"]) <= amount:
+                logging.warning("not enough balance %s:%s" % (self.goods, self.fg(amount)))
+                return
+            if b["currency"] == self.money and \
+                            b["type"] == "trade" and \
+                            float(b["balance"]) <= self.deal_size:
+                logging.warning("not enough balance %s:%.4f" % (self.money, self.deal_size))
+                return
 
         # create deal
         order1 = HuobiServices.send_order(self.fg(amount), None, self.symbol, "sell-limit", price=self.fm(bid_high))
