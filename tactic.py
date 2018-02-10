@@ -9,6 +9,9 @@ import config
 from lib import HuobiServices
 from config import work_dir
 
+ORDER_JUSTIFY = 0.01
+ORDER_LIMIT = 10
+
 
 class Tactic(object):
     def run(self):
@@ -141,11 +144,29 @@ class PriceDiffTactic(Tactic):
                             float(b["balance"]) <= self.deal_size:
                 logging.warning("not enough balance %s:%.4f" % (self.money, self.deal_size))
                 return
-        # create deal
+        # calc price
         bid_high = high * self.bid_goal + close * (1 - self.bid_goal)
         bid_low = close * (1 - self.bid_goal) + low * self.bid_goal
         buy_amount = amount*(1+self.bid_gap/2)
 
+        # check current deal (don't make too many deals at one price)
+        # the limit of deals whose selling price below (1+5%) * sell_price
+        sell_count = 0
+        buy_count = 0
+        deals = Deal.objects(symbol=self.symbol, status__in=['waiting', 'failing'])
+        for d in deals:
+            if not d['order1_finished'] and float(d['sell_price']) < (bid_high * (1 + ORDER_JUSTIFY)):
+                sell_count += 1
+            if not d['order2_finished'] and float(d['buy_price']) > (bid_low * (1 - ORDER_JUSTIFY)):
+                buy_count += 1
+        if sell_count >= ORDER_LIMIT:
+            logging.warning("too many unfinished selling order(%d) below %.4f" % (sell_count, bid_high * (1 + ORDER_JUSTIFY)))
+            return
+        if buy_count >= ORDER_LIMIT:
+            logging.warning("too many unfinished buying order(%d) above %.4f" % (buy_count, bid_low * (1 - ORDER_JUSTIFY)))
+            return
+
+        # create deal
         order1 = HuobiServices.send_order(self.fg(amount), None, self.symbol, "sell-limit", price=self.fm(bid_high))
         if order1['status'] != "ok":
             logging.error("send order failed: %s" % order1["err-msg"])

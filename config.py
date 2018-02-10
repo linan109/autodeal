@@ -14,15 +14,15 @@ init_deals = [
     ["iost-usdt-1", "iost", "usdt", 0.1, 0.90, 8, "60min", 2, 1, 3*24*60],
     ["dta-usdt-1", "dta", "usdt", 0.1, 0.90, 8, "60min", 2, 1, 3*24*60],
 
-    ["eth-usdt-small", "eth", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 3*24*60],
-    ["eos-usdt-small", "eos", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 3*24*60],
-    ["iost-usdt-small", "iost", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 3*24*60],
-    ["dta-usdt-small", "dta", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 3*24*60],
+    ["eth-usdt-small", "eth", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 24*60],
+    ["eos-usdt-small", "eos", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 24*60],
+    ["iost-usdt-small", "iost", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 24*60],
+    ["dta-usdt-small", "dta", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 24*60],
 
-    ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 12*60],
-    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 12*60],
-    ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 12*60],
-    ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 12*60],
+    ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
+    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
+    ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
+    ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
 
     ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
     ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],

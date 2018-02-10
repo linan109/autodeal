@@ -5,8 +5,8 @@ from datetime import datetime, timedelta
 
 class Deal(db.Document):
     tactic = db.StringField()
-    order1_id = db.StringField(max_length=12, unique=True)
-    order2_id = db.StringField(max_length=12, unique=True)
+    order1_id = db.StringField(max_length=12, unique=True)      # sell
+    order2_id = db.StringField(max_length=12, unique=True)      # buy
     expired = db.IntField()
     buy_price = db.StringField()
     sell_price = db.StringField()
