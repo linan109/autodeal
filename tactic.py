@@ -30,7 +30,7 @@ last_result = None
 
 
 def get_balance():
-    if datetime.now() - timedelta(minutes=1) > globals()['last_query_time']:
+    if datetime.now() - timedelta(minutes=1) >= globals()['last_query_time']:
         globals()['last_result'] = HuobiServices.get_balance()
         globals()['last_query_time'] = datetime.now()
     return globals()['last_result']
