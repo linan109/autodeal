@@ -146,7 +146,7 @@ class PriceDiffTactic(Tactic):
         # the limit of deals whose selling price below (1+5%) * sell_price
         sell_count = 0
         buy_count = 0
-        deals = Deal.objects(symbol=self.symbol, status__in=['waiting', 'failing'])
+        deals = Deal.objects(tactic__contains='-'.join([self.goods, self.money]), status__in=['waiting', 'failing'])
         for d in deals:
             if not d['order1_finished'] and float(d['sell_price']) < (bid_high * (1 + ORDER_JUSTIFY)):
                 sell_count += 1
