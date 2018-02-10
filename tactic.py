@@ -9,7 +9,7 @@ import config
 from lib import HuobiServices
 from config import work_dir
 
-ORDER_JUSTIFY = 0.01
+ORDER_JUSTIFY = 0.02
 ORDER_LIMIT = 10
 
 
