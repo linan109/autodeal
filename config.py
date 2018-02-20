@@ -18,11 +18,13 @@ init_deals = [
     ["eos-usdt-small", "eos", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 24*60],
     ["iost-usdt-small", "iost", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 24*60],
     ["dta-usdt-small", "dta", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 24*60],
+    ["bch-usdt-small", "bch", "usdt", 0.04, 0.80, 12, "60min", 3, 1, 24*60],
 
     ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
     ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
     ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
     ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
+    ["bch-usdt-small-short", "bch", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
 
     ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
     ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
@@ -49,6 +51,7 @@ init_deals = [
 price_unit = {
     "ethusdt": ["%.4f", "%.2f"],
     "eosusdt": ["%.4f", "%.2f"],
+    "bchusdt": ["%.4f", "%.2f"],
     "iostusdt": ["%.4f", "%.4f"],
     "dtausdt": ["%.4f", "%.4f"],
     "eoseth": ["%.2f", "%.8f"],
