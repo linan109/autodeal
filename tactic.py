@@ -27,12 +27,14 @@ class Tactic(object):
 
 last_query_time = datetime.now() - timedelta(minutes=1)
 last_result = None
+balance_changed = True
 
 
 def get_balance():
-    if datetime.now() - timedelta(minutes=1) >= globals()['last_query_time']:
+    if globals()['balance_changed'] or datetime.now() - timedelta(minutes=1) >= globals()['last_query_time']:
         globals()['last_result'] = HuobiServices.get_balance()
         globals()['last_query_time'] = datetime.now()
+        globals()['balance_changed'] = False
     return globals()['last_result']
 
 
@@ -196,6 +198,7 @@ class PriceDiffTactic(Tactic):
                 logging.error("withdraw order %d failed. reason: %s" % (order1_id, resp["err-msg"]))
             return
         order2_id = order2["data"]
+        globals()['balance_changed'] = True
         logging.info("success create order %s" % order2_id)
 
         Deal(tactic=self.name,
