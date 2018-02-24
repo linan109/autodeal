@@ -1,6 +1,15 @@
 import mongoengine as db
 import logging
 from datetime import datetime, timedelta
+from lib import HuobiServices
+
+
+def cancel_order(order_id):
+    resp = HuobiServices.cancel_order(order_id)
+    if resp['status'] == "ok":
+        logging.error("deal cancel. withdraw order %d succeed" % order_id)
+    else:
+        logging.error("deal cancel. withdraw order %d failed. reason: %s" % (order_id, resp["err-msg"]))
 
 
 class Deal(db.Document):
@@ -29,6 +38,8 @@ class Deal(db.Document):
                 logging.info("order %s finished" % self.order1_id)
             else:
                 self.status = "canceled"
+                if not self.order2_finished:
+                    cancel_order(self.order2_id)
                 logging.info("order %s canceled" % self.order1_id)
 
         if not self.order2_finished and int(self.order2_id) not in remain_order_ids:
@@ -37,6 +48,8 @@ class Deal(db.Document):
                 logging.info("order %s finished" % self.order2_id)
             else:
                 self.status = "canceled"
+                if not self.order1_finished:
+                    cancel_order(self.order1_id)
                 logging.info("order %s canceled" % self.order2_id)
 
         if self.order1_finished and self.order2_finished:
