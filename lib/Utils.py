@@ -59,7 +59,8 @@ def http_get_request(url, params, add_to_headers=None):
         if response.status_code == 200:
             return response.json()
         else:
-            logging.error("httpGet failed, detail is:%s" % response.text)
+            # mute not 200 response
+            # logging.error("httpGet failed, detail is:%s" % response.text)
             return
     except BaseException as e:
         logging.error("httpGet failed, detail is:%s" % e)
