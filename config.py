@@ -15,16 +15,18 @@ init_deals = [
     ["dta-usdt-1", "dta", "usdt", 0.1, 0.90, 8, "60min", 2, 1, 3*24*60],
 
     ["eth-usdt-small", "eth", "usdt", 0.04, 0.80, 12, "60min", 8, 1, 24*60],
-    ["eos-usdt-small", "eos", "usdt", 0.04, 0.80, 12, "60min", 8, 1, 24*60],
+    ["eos-usdt-small", "eos", "usdt", 0.04, 0.80, 12, "60min", 10, 1, 24*60],
     ["iost-usdt-small", "iost", "usdt", 0.04, 0.80, 12, "60min", 2, 1, 24*60],
     ["dta-usdt-small", "dta", "usdt", 0.04, 0.80, 12, "60min", 2, 1, 24*60],
     ["bch-usdt-small", "bch", "usdt", 0.04, 0.80, 12, "60min", 2, 2, 24*60],
+    ["etc-usdt-small", "etc", "usdt", 0.04, 0.80, 12, "60min", 4, 1, 24*60],
 
     ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
-    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
+    ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
     ["iost-usdt-small-short", "iost", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 6*60],
     ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 6*60],
     ["bch-usdt-small-short", "bch", "usdt", 0.04, 0.60, 12, "60min", 1, 2, 6*60],
+    ["etc-usdt-small-short", "etc", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
 
     ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
     ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
@@ -36,6 +38,7 @@ init_deals = [
     ["iost-usdt-tiny-short", "iost", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
     ["dta-usdt-tiny-short", "dta", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
     ["bch-usdt-tiny-short", "bch", "usdt", 0.02, 0.60, 12, "60min", 1, 2, 6*60],
+    ["etc-usdt-tiny-short", "etc", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
 
     # ["eth-usdt-fast-2", "eth", "usdt", 0.05, 0.85, 8, "60min", 3, 1],
     # ["eos-usdt-fast-2", "eos", "usdt", 0.05, 0.85, 8, "60min", 3, 1],
@@ -57,6 +60,7 @@ init_deals = [
 price_unit = {
     "ethusdt": ["%.4f", "%.2f"],
     "eosusdt": ["%.4f", "%.2f"],
+    "etcusdt": ["%.4f", "%.2f"],
     "bchusdt": ["%.4f", "%.2f"],
     "iostusdt": ["%.4f", "%.4f"],
     "dtausdt": ["%.4f", "%.4f"],
