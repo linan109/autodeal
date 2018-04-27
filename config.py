@@ -68,4 +68,5 @@ price_unit = {
     "iostusdt": ["%.4f", "%.4f"],
     "dtausdt": ["%.4f", "%.4f"],
     "eoseth": ["%.2f", "%.8f"],
+    "htusdt": ["%.2f", "%.8f"],
 }
