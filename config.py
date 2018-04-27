@@ -20,6 +20,7 @@ init_deals = [
     ["dta-usdt-small", "dta", "usdt", 0.04, 0.80, 12, "60min", 2, 1, 24*60],
     ["bch-usdt-small", "bch", "usdt", 0.04, 0.80, 12, "60min", 2, 2, 24*60],
     ["etc-usdt-small", "etc", "usdt", 0.04, 0.80, 12, "60min", 4, 1, 24*60],
+    ["ht-usdt-small", "ht", "usdt", 0.04, 0.80, 12, "60min", 2, 1, 24*60],
 
     ["eth-usdt-small-short", "eth", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
     ["eos-usdt-small-short", "eos", "usdt", 0.04, 0.60, 12, "60min", 3, 1, 6*60],
@@ -27,6 +28,7 @@ init_deals = [
     ["dta-usdt-small-short", "dta", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 6*60],
     ["bch-usdt-small-short", "bch", "usdt", 0.04, 0.60, 12, "60min", 1, 2, 6*60],
     ["etc-usdt-small-short", "etc", "usdt", 0.04, 0.60, 12, "60min", 2, 1, 6*60],
+    ["ht-usdt-small-short", "ht", "usdt", 0.04, 0.60, 12, "60min", 1, 1, 6*60],
 
     ["eth-usdt-fast", "eth", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
     ["eos-usdt-fast", "eos", "usdt", 0.06, 0.70, 4, "60min", 3, 1, 3*24*60],
@@ -39,6 +41,7 @@ init_deals = [
     ["dta-usdt-tiny-short", "dta", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
     ["bch-usdt-tiny-short", "bch", "usdt", 0.02, 0.60, 12, "60min", 1, 2, 6*60],
     ["etc-usdt-tiny-short", "etc", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
+    ["ht-usdt-tiny-short", "ht", "usdt", 0.02, 0.60, 12, "60min", 1, 1, 6*60],
 
     # ["eth-usdt-fast-2", "eth", "usdt", 0.05, 0.85, 8, "60min", 3, 1],
     # ["eos-usdt-fast-2", "eos", "usdt", 0.05, 0.85, 8, "60min", 3, 1],
