@@ -10,7 +10,7 @@ from lib import HuobiServices
 from config import work_dir
 
 ORDER_JUSTIFY = 0.02
-ORDER_LIMIT = 15
+ORDER_LIMIT = 20
 
 
 class Tactic(object):
